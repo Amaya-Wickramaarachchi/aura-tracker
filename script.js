@@ -4,6 +4,7 @@ document.getElementById('skincare-form').addEventListener('submit', function(e) 
     const productName = document.getElementById('product-name').value;
     const timestamp = new Date().toLocaleString();
     const entry = { product: productName, time: timestamp };
+    console.log('Entry added:', entry); // Basic logging
 
     let history = JSON.parse(localStorage.getItem('skincareHistory')) || [];
     history.push(entry);
@@ -14,6 +15,7 @@ document.getElementById('skincare-form').addEventListener('submit', function(e) 
 });
 
 function displayHistory() {
+    console.log('Displaying history'); // Basic logging
     const historyList = document.getElementById('history-list');
     historyList.innerHTML = '';
     
