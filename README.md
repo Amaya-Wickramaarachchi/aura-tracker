@@ -22,7 +22,6 @@ AURA is a simple skincare tracker built with HTML, CSS, and JavaScript. Users ca
 - **Staging**: https://aura-tracker-git-staging-amaya-wickramaarahchis-projects.vercel.app (staging branch)
 - **Dev**: https://aura-tracker-git-dev-amaya-wickramaarahchis-projects.vercel.app (dev branch)
 
-
 ## AI Usage
 - Used Grok by xAI to guide development and provide code samples.
 
@@ -53,3 +52,7 @@ AURA is a simple skincare tracker built with HTML, CSS, and JavaScript. Users ca
 - Journey: Add entry > check history.
 - Current: Manual browser test.
 - Future: Use GitHub Actions cron job.
+
+## Blue-Green Deployment
+- Tested `<p>Blue-Green Test</p>` on `dev` (green), merged to `staging`, then `main` (blue) for prod.
+- Live at: https://aura-tracker-one.vercel.app/
