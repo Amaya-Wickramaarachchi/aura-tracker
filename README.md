@@ -33,3 +33,15 @@ AURA is a simple skincare tracker built with HTML, CSS, and JavaScript. Users ca
 
 ## SLA
 - Goal: Resolve issues within 48 hours of creation (solo project).
+
+## Monitoring
+- Current: Console logs for debugging.
+- Future: Integrate Sentry for tracing/logging.
+
+## SLO
+- Objective: App loads and saves entries in <1s.
+- Metric: Total entries logged.
+
+## Alerting
+- Rule: Alert if app fails to load (manual check).
+- Response: Check console logs, fix within 24 hours.
