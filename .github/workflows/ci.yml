@@ -6,10 +6,9 @@ on:
   pull_request:
     branches: [main]
 
-# Add permissions to allow CodeQL to upload results
 permissions:
   contents: read
-  security-events: write # Required for CodeQL to upload scan results
+  security-events: write
   actions: read
 
 jobs:
