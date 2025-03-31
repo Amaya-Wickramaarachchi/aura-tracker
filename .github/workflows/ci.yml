@@ -6,6 +6,12 @@ on:
   pull_request:
     branches: [main]
 
+# Add permissions to allow CodeQL to upload results
+permissions:
+  contents: read
+  security-events: write # Required for CodeQL to upload scan results
+  actions: read
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -36,7 +42,7 @@ jobs:
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
         with:
-          languages: javascript # We’re analyzing JS in your project
+          languages: javascript
 
       - name: Analyze with CodeQL
         uses: github/codeql-action/analyze@v2
