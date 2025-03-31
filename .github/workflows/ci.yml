@@ -1,37 +1,48 @@
 name: CI Pipeline
+
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '16'
+
       - name: Cache htmlhint
         uses: actions/cache@v3
         with:
           path: ~/.npm
           key: ${{ runner.os }}-htmlhint-${{ hashFiles('**/package-lock.json') }}
           restore-keys: ${{ runner.os }}-htmlhint-
+
       - name: Lint HTML
         run: |
           npm install -g htmlhint
           htmlhint index.html
+
       - name: Run JS Tests
         run: node tests/script.test.js
+
       - name: Security Scan (SAST)
         uses: github/codeql-action/analyze@v2
-      - name: Archive site
-        uses: actions/upload-artifact@v3
+
+      - name: Upload site artifacts
+        if: always() # Ensures artifacts upload even if a step fails
+        uses: actions/upload-artifact@v4 # Updated to v4
         with:
           name: aura-site
           path: |
             index.html
             styles.css
             script.js
+            tests/
