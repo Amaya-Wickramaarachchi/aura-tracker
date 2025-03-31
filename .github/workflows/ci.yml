@@ -13,9 +13,23 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16'
+      - name: Cache htmlhint
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-htmlhint-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-htmlhint-
       - name: Lint HTML
         run: |
           npm install -g htmlhint
           htmlhint index.html
       - name: Run JS Tests
         run: node tests/script.test.js
+      - name: Archive site
+        uses: actions/upload-artifact@v3
+        with:
+          name: aura-site
+          path: |
+            index.html
+            styles.css
+            script.js
