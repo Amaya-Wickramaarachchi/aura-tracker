@@ -1,0 +1,18 @@
+openapi: 3.0.0
+info:
+  title: AURA Skincare Tracker API
+  version: 1.0.0
+paths:
+  /entries:
+    post:
+      summary: Add skincare entry
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product: { type: string }
+                time: { type: string }
+      responses:
+        '201': { description: Entry added }
