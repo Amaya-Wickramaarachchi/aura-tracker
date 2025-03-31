@@ -33,12 +33,17 @@ jobs:
       - name: Run JS Tests
         run: node tests/script.test.js
 
-      - name: Security Scan (SAST)
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: javascript # We’re analyzing JS in your project
+
+      - name: Analyze with CodeQL
         uses: github/codeql-action/analyze@v2
 
       - name: Upload site artifacts
-        if: always() # Ensures artifacts upload even if a step fails
-        uses: actions/upload-artifact@v4 # Updated to v4
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
           name: aura-site
           path: |
