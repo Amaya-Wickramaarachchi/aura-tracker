@@ -45,3 +45,8 @@ AURA is a simple skincare tracker built with HTML, CSS, and JavaScript. Users ca
 ## Alerting
 - Rule: Alert if app fails to load (manual check).
 - Response: Check console logs, fix within 24 hours.
+
+## Synthetic Monitoring
+- Journey: Add entry > check history.
+- Current: Manual browser test.
+- Future: Use GitHub Actions cron job.
