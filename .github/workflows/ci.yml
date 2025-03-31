@@ -1,0 +1,15 @@
+name: CI Pipeline
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Lint HTML
+        run: |
+          npm install -g htmlhint
+          htmlhint index.html
