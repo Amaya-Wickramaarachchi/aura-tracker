@@ -25,6 +25,8 @@ jobs:
           htmlhint index.html
       - name: Run JS Tests
         run: node tests/script.test.js
+      - name: Security Scan (SAST)
+        uses: github/codeql-action/analyze@v2
       - name: Archive site
         uses: actions/upload-artifact@v3
         with:
