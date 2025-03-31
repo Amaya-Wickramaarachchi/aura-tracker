@@ -26,3 +26,7 @@ AURA is a simple skincare tracker built with HTML, CSS, and JavaScript. Users ca
 ## Future Improvements
 - Add delete/edit functionality.
 - Include product categories.
+
+## Dependency Management
+- Currently no external dependencies.
+- Future plan: Use Dependabot (GitHub tool) for automated updates if libraries like Bootstrap are added.
