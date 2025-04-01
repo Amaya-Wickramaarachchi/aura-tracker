@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA - Skincare Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>AURA</h1>
+        <p>Track your skin, embrace your glow.</p>
+    </header>
+    <div class="container">
+        <div class="form-card">
+            <form id="skincare-form">
+                <label for="routine-step">Step</label>
+                <select id="routine-step" required>
+                    <option value="" disabled selected>Choose a step</option>
+                    <option value="Cleanser">Cleanser</option>
+                    <option value="Toner">Toner</option>
+                    <option value="Serum">Serum</option>
+                    <option value="Moisturizer">Moisturizer</option>
+                    <option value="Sunscreen">Sunscreen</option>
+                </select>
+
+                <label for="product-name">Product</label>
+                <input type="text" id="product-name" placeholder="e.g., Glow Serum" required>
+
+                <label for="skin-condition">Condition</label>
+                <input type="text" id="skin-condition" placeholder="e.g., Hydrated, Acne">
+
+                <label>AM/PM</label>
+                <div class="radio-group">
+                    <input type="radio" id="am" name="time-of-day" value="AM" required>
+                    <label for="am">AM</label>
+                    <input type="radio" id="pm" name="time-of-day" value="PM">
+                    <label for="pm">PM</label>
+                </div>
+
+                <button type="submit">Add to Routine</button>
+            </form>
+        </div>
+        <h2>Your Skincare Diary</h2>
+        <ul id="history-list" class="history-list"></ul>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
