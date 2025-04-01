@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #FFF5F5; /* Rare Beauty soft pink-white */
+    background-color: #f5eff4; /* Soft lavender-pink background */
     color: #333;
     padding: 20px;
     line-height: 1.6;
@@ -19,7 +19,7 @@ header {
 
 header h1 {
     font-size: 2.5em;
-    color: #FF9999; /* Muted peach-pink */
+    color: #6f0936; /* Deep plum for title */
     font-weight: 600;
 }
 
@@ -44,7 +44,7 @@ header p {
 }
 
 .form-card:hover {
-    transform: translateY(-5px); /* Subtle lift on hover */
+    transform: translateY(-5px);
 }
 
 form {
@@ -61,16 +61,16 @@ label {
 
 select, input[type="text"] {
     padding: 10px;
-    border: 1px solid #FFD1CC; /* Soft peach border */
+    border: 1px solid #f5eff4; /* Matching soft border */
     border-radius: 8px;
     font-size: 1em;
-    background: #FFF5F5;
+    background: #f5eff4;
     transition: border-color 0.3s ease;
 }
 
 select:focus, input[type="text"]:focus {
     outline: none;
-    border-color: #FF9999;
+    border-color: #6f0936; /* Plum accent on focus */
 }
 
 .radio-group {
@@ -80,7 +80,7 @@ select:focus, input[type="text"]:focus {
 }
 
 .radio-group input[type="radio"] {
-    accent-color: #FF9999; /* Pink radio buttons */
+    accent-color: #6f0936; /* Plum radio buttons */
 }
 
 .radio-group label {
@@ -90,7 +90,7 @@ select:focus, input[type="text"]:focus {
 
 button {
     padding: 12px;
-    background-color: #FF9999;
+    background-color: #6f0936; /* Plum button */
     color: white;
     border: none;
     border-radius: 8px;
@@ -101,12 +101,12 @@ button {
 }
 
 button:hover {
-    background-color: #FF8080; /* Slightly darker pink */
+    background-color: #4a0624; /* Darker plum on hover */
 }
 
 h2 {
     font-size: 1.5em;
-    color: #FF9999;
+    color: #6f0936; /* Plum for subheading */
     margin-bottom: 20px;
     font-weight: 400;
 }
@@ -127,5 +127,5 @@ h2 {
 }
 
 .history-list li:hover {
-    transform: scale(1.02); /* Slight grow effect */
+    transform: scale(1.02);
 }
