@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <h1>AURA</h1>
+        <h1>AURA - Skincare Tracker</h1>
         <p>Track your skin, embrace your glow.</p>
     </header>
     <div class="container">
@@ -54,7 +54,12 @@
         <h2>Your Skincare Diary</h2>
         <button id="clear-history">Clear History</button>
         <ul id="history-list" class="history-list"></ul>
+        <h2>Your Skin Mood Trends</h2>
+        <div class="chart-container">
+            <canvas id="moodChart"></canvas>
+        </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

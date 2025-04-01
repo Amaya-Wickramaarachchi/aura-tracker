@@ -6,6 +6,8 @@ const tips = [
     "Listen to your skin—it knows what it needs."
 ];
 
+let moodChart;
+
 document.getElementById('skincare-form').addEventListener('submit', function(e) {
     e.preventDefault();
 
@@ -31,6 +33,7 @@ document.getElementById('skincare-form').addEventListener('submit', function(e) 
 
     document.getElementById('skincare-form').reset();
     displayHistory();
+    updateMoodChart();
 
     const randomTip = tips[Math.floor(Math.random() * tips.length)];
     alert(`Entry added!\nTip: ${randomTip}`);
@@ -46,7 +49,10 @@ function displayHistory() {
         li.textContent = `${entry.timeOfDay} - ${entry.routine}: ${entry.product} (Condition: ${entry.condition}, Mood: ${entry.mood}) - ${entry.timestamp}`;
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = 'Delete';
-        deleteBtn.onclick = () => deleteEntry(index);
+        deleteBtn.onclick = () => {
+            deleteEntry(index);
+            updateMoodChart();
+        };
         li.appendChild(deleteBtn);
         historyList.appendChild(li);
     });
@@ -63,7 +69,60 @@ document.getElementById('clear-history').addEventListener('click', function() {
     if (confirm('Are you sure you want to clear your skincare history?')) {
         localStorage.removeItem('skincareHistory');
         displayHistory();
+        updateMoodChart();
     }
 });
 
-window.onload = displayHistory;
+function updateMoodChart() {
+    const history = JSON.parse(localStorage.getItem('skincareHistory')) || [];
+    const moodCounts = {
+        Glowy: 0,
+        Dry: 0,
+        Oily: 0,
+        Tired: 0,
+        Balanced: 0
+    };
+
+    history.forEach(entry => {
+        moodCounts[entry.mood]++;
+    });
+
+    const ctx = document.getElementById('moodChart').getContext('2d');
+    if (moodChart) moodChart.destroy(); // Destroy old chart to avoid overlap
+
+    moodChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Glowy', 'Dry', 'Oily', 'Tired', 'Balanced'],
+            datasets: [{
+                label: 'Skin Mood Frequency',
+                data: [moodCounts.Glowy, moodCounts.Dry, moodCounts.Oily, moodCounts.Tired, moodCounts.Balanced],
+                backgroundColor: '#6f0936',
+                borderColor: '#4a0624',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#6f0936'
+                    }
+                }
+            }
+        }
+    });
+}
+
+window.onload = function() {
+    displayHistory();
+    updateMoodChart();
+};
