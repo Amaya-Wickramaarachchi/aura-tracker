@@ -7,7 +7,31 @@ const tips = [
 ];
 
 let moodChart;
-const isPremium = false; // Placeholder; integrate with auth later
+let isPremium = localStorage.getItem('premiumStatus') === 'true'; // Check premium status
+
+// Modal controls
+const modal = document.getElementById('signup-modal');
+const upgradeBtn = document.getElementById('upgrade-btn');
+const closeModal = document.getElementById('close-modal');
+
+upgradeBtn.onclick = () => modal.style.display = 'block';
+closeModal.onclick = () => modal.style.display = 'none';
+window.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; };
+
+document.getElementById('signup-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    // Simulate signup success (replace with real auth later)
+    localStorage.setItem('premiumStatus', 'true');
+    localStorage.setItem('userEmail', email);
+    isPremium = true;
+    modal.style.display = 'none';
+    alert('Welcome to Premium! Enjoy your upgraded features.');
+    displayHistory();
+    updateMoodChart();
+});
 
 document.getElementById('skincare-form').addEventListener('submit', function(e) {
     e.preventDefault();
