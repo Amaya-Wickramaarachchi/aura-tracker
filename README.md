@@ -17,8 +17,10 @@ AURA is a simple skincare tracker built with HTML, CSS, and JavaScript. Users ca
 1. Clone the repo: `git clone https://github.com/your-username/aura-skincare-tracker.git`
 2. Open `index.html` in a browser.
 
-## Deployment
-- Deployed on Vercel: [Live URL](https://aura-skincare-tracker.vercel.app) (replace with your URL)
+## Deployment Environments
+- **Prod**: https://aura-tracker-one.vercel.app/ (main branch)
+- **Staging**: https://aura-tracker-git-staging-amaya-wickramaarahchis-projects.vercel.app (staging branch)
+- **Dev**: https://aura-tracker-git-dev-amaya-wickramaarahchis-projects.vercel.app (dev branch)
 
 ## AI Usage
 - Used Grok by xAI to guide development and provide code samples.
@@ -50,3 +52,16 @@ AURA is a simple skincare tracker built with HTML, CSS, and JavaScript. Users ca
 - Journey: Add entry > check history.
 - Current: Manual browser test.
 - Future: Use GitHub Actions cron job.
+
+## Blue-Green Deployment
+- Tested `<p>Blue-Green Test</p>` on `dev` (green), merged to `staging`, then `main` (blue) for prod.
+- Live at: https://aura-tracker-one.vercel.app/
+
+## CDN & Caching
+- Vercel CDN enabled.
+- 1-hour cache via `vercel.json`.
+
+## Disaster Recovery
+- **Backup**: GitHub repo (https://github.com/Amaya-Wickramaarachchi/aura-tracker).
+- **Recovery**: `git clone`, `vercel --prod`.
+
