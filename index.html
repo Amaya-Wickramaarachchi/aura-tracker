@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <h1>AURA - Skincare Tracker</h1>
+        <h1>AURA</h1>
         <p>Track your skin, embrace your glow.</p>
     </header>
     <div class="container">
@@ -31,6 +31,15 @@
                 <label for="skin-condition">Condition</label>
                 <input type="text" id="skin-condition" placeholder="e.g., Hydrated, Acne">
 
+                <label for="skin-mood">Skin Mood</label>
+                <select id="skin-mood">
+                    <option value="Glowy">Glowy</option>
+                    <option value="Dry">Dry</option>
+                    <option value="Oily">Oily</option>
+                    <option value="Tired">Tired</option>
+                    <option value="Balanced">Balanced</option>
+                </select>
+
                 <label>AM/PM</label>
                 <div class="radio-group">
                     <input type="radio" id="am" name="time-of-day" value="AM" required>
@@ -43,6 +52,7 @@
             </form>
         </div>
         <h2>Your Skincare Diary</h2>
+        <button id="clear-history">Clear History</button>
         <ul id="history-list" class="history-list"></ul>
     </div>
     <script src="script.js"></script>
