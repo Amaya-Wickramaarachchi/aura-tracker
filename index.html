@@ -8,14 +8,36 @@
 </head>
 <body>
     <div class="container">
-        <h1>AURA Staging Tracker</h1>
+        <h1>AURA Skincare Tracker</h1>
         <form id="skincare-form">
+            <label for="routine-step">Routine Step:</label>
+            <select id="routine-step" required>
+                <option value="" disabled selected>Select a step</option>
+                <option value="Cleanser">Cleanser</option>
+                <option value="Toner">Toner</option>
+                <option value="Serum">Serum</option>
+                <option value="Moisturizer">Moisturizer</option>
+                <option value="Sunscreen">Sunscreen</option>
+            </select>
+
+            <label for="product-name">Product Name:</label>
             <input type="text" id="product-name" placeholder="Enter product name" required>
+
+            <label for="skin-condition">Skin Condition:</label>
+            <input type="text" id="skin-condition" placeholder="e.g., Dryness, Acne">
+
+            <label>Time of Day:</label>
+            <div class="radio-group">
+                <input type="radio" id="am" name="time-of-day" value="AM" required>
+                <label for="am">AM</label>
+                <input type="radio" id="pm" name="time-of-day" value="PM">
+                <label for="pm">PM</label>
+            </div>
+
             <button type="submit">Add Entry</button>
         </form>
         <h2>Your Skincare History</h2>
         <ul id="history-list"></ul>
-        <p>Blue-Green Test</p> <!-- Added feature -->
     </div>
     <script src="script.js"></script>
 </body>
