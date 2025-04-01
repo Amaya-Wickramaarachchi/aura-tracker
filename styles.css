@@ -259,3 +259,13 @@ h2 {
     color: #666;
     margin-top: 15px;
 }
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #6f0936;
+}
+footer a {
+    color: #6f0936;
+    text-decoration: underline;
+}
