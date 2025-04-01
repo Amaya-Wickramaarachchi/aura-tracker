@@ -7,6 +7,7 @@ const tips = [
 ];
 
 let moodChart;
+const isPremium = false; // Placeholder; integrate with auth later
 
 document.getElementById('skincare-form').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -33,10 +34,14 @@ document.getElementById('skincare-form').addEventListener('submit', function(e) 
 
     document.getElementById('skincare-form').reset();
     displayHistory();
-    updateMoodChart();
 
-    const randomTip = tips[Math.floor(Math.random() * tips.length)];
-    alert(`Entry added!\nTip: ${randomTip}`);
+    if (isPremium) {
+        updateMoodChart();
+        const randomTip = tips[Math.floor(Math.random() * tips.length)];
+        alert(`Entry added!\nTip: ${randomTip}`);
+    } else {
+        alert('Entry added! Upgrade to Premium for mood trends and tips.');
+    }
 });
 
 function displayHistory() {
@@ -46,14 +51,16 @@ function displayHistory() {
     const history = JSON.parse(localStorage.getItem('skincareHistory')) || [];
     history.forEach((entry, index) => {
         const li = document.createElement('li');
-        li.textContent = `${entry.timeOfDay} - ${entry.routine}: ${entry.product} (Condition: ${entry.condition}, Mood: ${entry.mood}) - ${entry.timestamp}`;
-        const deleteBtn = document.createElement('button');
-        deleteBtn.textContent = 'Delete';
-        deleteBtn.onclick = () => {
-            deleteEntry(index);
-            updateMoodChart();
-        };
-        li.appendChild(deleteBtn);
+        li.textContent = `${entry.timeOfDay} - ${entry.routine}: ${entry.product} (Condition: ${entry.condition}${isPremium ? `, Mood: ${entry.mood}` : ''}) - ${entry.timestamp}`;
+        if (isPremium) {
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.onclick = () => {
+                deleteEntry(index);
+                updateMoodChart();
+            };
+            li.appendChild(deleteBtn);
+        }
         historyList.appendChild(li);
     });
 }
@@ -69,11 +76,14 @@ document.getElementById('clear-history').addEventListener('click', function() {
     if (confirm('Are you sure you want to clear your skincare history?')) {
         localStorage.removeItem('skincareHistory');
         displayHistory();
-        updateMoodChart();
+        if (isPremium) updateMoodChart();
     }
 });
 
 function updateMoodChart() {
+    document.getElementById('chart-container').style.display = 'block';
+    document.getElementById('premium-teaser').style.display = 'none';
+
     const history = JSON.parse(localStorage.getItem('skincareHistory')) || [];
     const moodCounts = {
         Glowy: 0,
@@ -88,7 +98,7 @@ function updateMoodChart() {
     });
 
     const ctx = document.getElementById('moodChart').getContext('2d');
-    if (moodChart) moodChart.destroy(); // Destroy old chart to avoid overlap
+    if (moodChart) moodChart.destroy();
 
     moodChart = new Chart(ctx, {
         type: 'bar',
@@ -124,5 +134,9 @@ function updateMoodChart() {
 
 window.onload = function() {
     displayHistory();
-    updateMoodChart();
+    if (isPremium) updateMoodChart();
+    else {
+        document.getElementById('chart-container').style.display = 'none';
+        document.getElementById('premium-teaser').style.display = 'block';
+    }
 };

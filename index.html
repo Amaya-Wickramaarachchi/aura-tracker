@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <h1>AURA - Skincare Tracker</h1>
+        <h1>AURA</h1>
         <p>Track your skin, embrace your glow.</p>
     </header>
     <div class="container">
@@ -55,7 +55,11 @@
         <button id="clear-history">Clear History</button>
         <ul id="history-list" class="history-list"></ul>
         <h2>Your Skin Mood Trends</h2>
-        <div class="chart-container">
+        <div class="premium-teaser" id="premium-teaser">
+            <p>Unlock Skin Mood Graphs, Tips & More with Premium - $2.99/month</p>
+            <button onclick="alert('Sign up for Premium at aura-tracker-one.vercel.app/premium')">Upgrade</button>
+        </div>
+        <div class="chart-container" id="chart-container" style="display: none;">
             <canvas id="moodChart"></canvas>
         </div>
     </div>
