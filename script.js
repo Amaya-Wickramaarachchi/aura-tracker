@@ -21,6 +21,9 @@ document.getElementById('skincare-form').addEventListener('submit', function(e) 
 
     document.getElementById('skincare-form').reset();
     displayHistory();
+
+    // Flash a success message
+    alert('Entry added to your skincare diary!');
 });
 
 function displayHistory() {
